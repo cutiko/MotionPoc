@@ -14,6 +14,9 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint android:id="@id/helloView">
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="@android:color/black"/>
             <Layout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,8 +30,10 @@
     <ConstraintSet
         android:id="@+id/end"
         motion:deriveConstraintsFrom="@id/start">
-
         <Constraint android:id="@id/helloView">
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="@color/colorAccent"/>
             <Layout
                 android:layout_width="200dp"
                 android:layout_height="200dp"
