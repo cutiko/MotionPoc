@@ -5,41 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/scene_main"
-    tools:context=".MainActivity"
-    tools:showPaths="true">
-
-    <View
-        android:background="@android:color/holo_blue_bright"
-        android:layout_marginTop="34dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/immutableView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-
-    <Button
-        android:text="Change Visibility"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/immutableView"
-        android:id="@+id/backGrounderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/helloView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/holo_blue_bright"
         android:gravity="center"
-        android:padding="16dp"
-        android:text="Hello World!"
+        android:text="Toolbar"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hideable"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:text="Hideable Header"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/sticky"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@android:color/holo_orange_light"
+        android:gravity="center"
+        android:text="Sticky Header"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hideable" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@android:color/white"
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sticky" />
+
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

@@ -3,45 +3,101 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/dragUpEnd"
+        motion:constraintSetStart="@+id/dragUpStart"
         motion:duration="1000">
         <OnSwipe
-            motion:dragDirection="dragRight"
-            motion:touchAnchorId="@id/helloView"
-            motion:touchAnchorSide="right" />
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@id/recycler"
+            motion:touchAnchorSide="top" />
     </Transition>
 
-    <ConstraintSet android:id="@+id/start">
-        <Constraint android:id="@id/helloView">
-            <CustomAttribute
-                motion:attributeName="backgroundColor"
-                motion:customColorValue="@android:color/black"/>
+    <ConstraintSet android:id="@+id/dragUpStart">
+        <Constraint android:id="@id/toolbar">
             <Layout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintTop_toTopOf="parent" />
         </Constraint>
+
+        <Constraint android:id="@id/hideable">
+            <CustomAttribute
+                motion:attributeName="alpha"
+                motion:customFloatValue="1"/>
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/toolbar" />
+        </Constraint>
+
+        <Constraint android:id="@id/sticky">
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/hideable" />
+        </Constraint>
+
+        <Constraint android:id="@id/recycler">
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/sticky" />
+        </Constraint>
+
     </ConstraintSet>
 
     <ConstraintSet
-        android:id="@+id/end"
-        motion:deriveConstraintsFrom="@id/start">
-        <Constraint android:id="@id/helloView">
-            <CustomAttribute
-                motion:attributeName="backgroundColor"
-                motion:customColorValue="@color/colorAccent"/>
+        android:id="@+id/dragUpEnd"
+        motion:deriveConstraintsFrom="@id/dragUpStart">
+        <Constraint android:id="@id/toolbar">
             <Layout
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginEnd="8dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
                 motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintTop_toTopOf="parent" />
         </Constraint>
+
+        <Constraint android:id="@id/hideable">
+            <CustomAttribute
+                motion:attributeName="alpha"
+                motion:customFloatValue="0"/>
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/toolbar" />
+        </Constraint>
+
+        <Constraint android:id="@id/sticky">
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/toolbar" />
+        </Constraint>
+
+        <Constraint android:id="@id/recycler">
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/sticky" />
+        </Constraint>
+
     </ConstraintSet>
 
 </MotionScene>
